@@ -48,10 +48,12 @@ public class OmdbConnection {
         return null;
     }
 
-    public static void getMoviesByTitle(String title) {
+    public static Search getMoviesByTitle(String title) {
+        Search search = null;
+        
         try {
             String json = readUrl("http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title + "&plot=full");
-            Search search = GSON.fromJson(json, Search.class);
+            search = GSON.fromJson(json, Search.class);
 
             for(int i = 0; i < search.Search.size(); i++)
                 search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID));
@@ -62,9 +64,9 @@ public class OmdbConnection {
 
         } catch (JsonSyntaxException | IOException ex) {
             Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
         }
+        
+        return search;
     }
 
     public static Item getMovieByImdbID(String imdbID) throws IOException {
