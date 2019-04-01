@@ -64,6 +64,9 @@ public class OmdbConnection {
 
         } catch (JsonSyntaxException | IOException ex) {
             Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NullPointerException ex) {
+            System.out.println("No Movies Found.");
+            return null;
         }
         
         return search;
@@ -72,6 +75,17 @@ public class OmdbConnection {
     public static Item getMovieByImdbID(String imdbID) throws IOException {
         String json = readUrl("http://www.omdbapi.com/?apikey=" + APIKEY + "&i=" + imdbID + "&plot=full");
         return GSON.fromJson(json, Item.class);
+    }
+    
+    public static String getPosterUrlByImdbID(String imdbID, int height) {
+        String url = "http://img.omdbapi.com/?apikey=" + APIKEY + "&i=" + imdbID + "&h=" + height;
+        return url;
+    }
+    
+    public static String getPosterUrlByTitle(String title, int height) {
+        String imdbID = getMoviesByTitle(title).Search.get(0).imdbID;
+        return getPosterUrlByImdbID(imdbID, height);
+        
     }
 
 } // OmdbConnection
