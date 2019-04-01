@@ -116,13 +116,15 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jlMovieImage3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Movie 3"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Blockbuster2/images/CaptainMarvel_1.jpg"/>
+            </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jlMovieImage1">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Blockbuster2/images/MonstersInc.jpg"/>
+              <Image iconType="3" name="/Blockbuster2/images/PetSemetary.jpg"/>
             </Property>
           </Properties>
           <AuxValues>
@@ -132,7 +134,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jlMovieImage2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Movie 2"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/Blockbuster2/images/US_1.jpg"/>
+            </Property>
           </Properties>
         </Component>
       </SubComponents>

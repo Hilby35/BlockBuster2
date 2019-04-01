@@ -53,13 +53,13 @@ public class HomeScreen extends javax.swing.JFrame {
 
         jButton2.setText("Go!");
 
-        jlMovieImage3.setText("Movie 3");
+        jlMovieImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/CaptainMarvel_1.jpg"))); // NOI18N
 
         ImageIcon movieImage1 = new ImageIcon("Blockbuster2.images\\MonstersInc.jpg");
         jlMovieImage1.setIcon(movieImage1);
-        jlMovieImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/MonstersInc.jpg"))); // NOI18N
+        jlMovieImage1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/PetSemetary.jpg"))); // NOI18N
 
-        jlMovieImage2.setText("Movie 2");
+        jlMovieImage2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/US_1.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jpMovieDisplayerLayout = new javax.swing.GroupLayout(jpMovieDisplayer);
         jpMovieDisplayer.setLayout(jpMovieDisplayerLayout);
