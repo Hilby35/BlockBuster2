@@ -19,14 +19,14 @@ public class Item {
 
     @Override
     public String toString() {
-        String output = "\nTitle: " + Title;
+        String output = "Title: " + Title;
         output += "\nImdbID: " + imdbID;
         output += "\nReleased: " + Released;
         output += "\nRuntime: " + Runtime;
-        output += "\nPlot" + Plot;
+        output += "\nPlot: " + Plot;
         output += "\nPoster: " + Poster;
         
-        return output + "\n";
+        return output;
     }
     
     

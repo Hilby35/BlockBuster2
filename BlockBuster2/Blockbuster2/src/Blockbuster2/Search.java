@@ -23,10 +23,10 @@ public class Search {
     }
     
     public String toString() {
-        String output = "Search Results:";
+        String output = "Search Results:\n";
         
         for(int i = 0; i < Search.size(); i++)
-            output += "Result " + (i+1) + ":\n" + Search.get(i);
+            output += "Result " + (i+1) + ":\n" + Search.get(i) + "\n\n";
         
         return output;
     }
