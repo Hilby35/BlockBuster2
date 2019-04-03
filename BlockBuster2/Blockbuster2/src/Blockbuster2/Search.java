@@ -18,8 +18,8 @@ public class Search {
     String Response;
     
     public void addLastPage(Search search){
-        for(int i = 0; i < search.Search.size(); i++)
-            this.Search.add(i, search.Search.get(i));
+        for(Item i : search.Search)
+            this.Search.add(i);
     }
 
 } // Search

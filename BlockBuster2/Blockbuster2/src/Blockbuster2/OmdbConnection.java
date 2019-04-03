@@ -73,8 +73,10 @@ public class OmdbConnection {
             
             int totalResponses = Integer.parseInt(search.totalResults);
             if(totalResponses > 10) {
-                for(int i = 0; i < totalResponses + 10; i+=10){
-                    search = new Search(search);
+                for(int i = 0; i < Math.ceil(totalResponses/10.0); i++){
+                    url = "http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title + "&page=" + i;
+                    json = readUrl(url);
+                    search.addLastPage(GSON.fromJson(json, Search.class));
                 }
             } else {   
                 for(int i = 0; i < search.Search.size(); i++)
@@ -117,7 +119,7 @@ public class OmdbConnection {
     }
     
     public static String getPosterUrlByTitle(String title, int height) {
-        String imdbID = getMoviesByTitle(title, "", 0, 0).Search.get(0).imdbID;
+        String imdbID = getMoviesByTitle(title, "", 0).Search.get(0).imdbID;
         return getPosterUrlByImdbID(imdbID, height);
         
     }
