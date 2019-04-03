@@ -52,7 +52,11 @@ public class OmdbConnection {
         return null;
     }
 
-    public static Search getMoviesByTitle(String title, String type, int year, int page) {
+    public static Search getMoviesByTitle(String title) {
+        return getMoviesByTitle(title, "", 0);
+    }
+    
+    public static Search getMoviesByTitle(String title, String type, int year) {
         Search search = null;
         
         try {
@@ -64,15 +68,19 @@ public class OmdbConnection {
             if(year != 0)
                 url += "&y=" + year;
             
-            if(page != 0 && (page > 0 && page < 101))
-                url += "&page=" + page;
-            
             String json = readUrl(url);
             search = GSON.fromJson(json, Search.class);
-
-            for(int i = 0; i < search.Search.size(); i++)
-                search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID, "", "", 0, ""));
-
+            
+            int totalResponses = Integer.parseInt(search.totalResults);
+            if(totalResponses > 10) {
+                for(int i = 0; i < totalResponses + 10; i+=10){
+                    search = new Search(search);
+                }
+            } else {   
+                for(int i = 0; i < search.Search.size(); i++)
+                    search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID, "", "", 0, ""));
+            }
+            
             for (Item i : search.Search) {
                 System.out.println(i);
             }
