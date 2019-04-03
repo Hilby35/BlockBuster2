@@ -32,7 +32,7 @@ public class HomeScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jtfSearchBar = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jbAdvancedSearch = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jpMovieDisplayer = new javax.swing.JPanel();
         jlMovieImage3 = new javax.swing.JLabel();
@@ -49,7 +49,12 @@ public class HomeScreen extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Advanced Search");
+        jbAdvancedSearch.setText("Advanced Search");
+        jbAdvancedSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbAdvancedSearchActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Go!");
 
@@ -102,7 +107,7 @@ public class HomeScreen extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jbAdvancedSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(86, 86, 86))
         );
         layout.setVerticalGroup(
@@ -115,7 +120,7 @@ public class HomeScreen extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jbAdvancedSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -130,6 +135,13 @@ public class HomeScreen extends javax.swing.JFrame {
     private void jtfSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchBarActionPerformed
+
+    private void jbAdvancedSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdvancedSearchActionPerformed
+        
+        SearchWindow advancedSearch = new SearchWindow();
+        advancedSearch.setVisible(true);
+        
+    }//GEN-LAST:event_jbAdvancedSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,9 +179,9 @@ public class HomeScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jbAdvancedSearch;
     private javax.swing.JLabel jlMovieImage1;
     private javax.swing.JLabel jlMovieImage2;
     private javax.swing.JLabel jlMovieImage3;
