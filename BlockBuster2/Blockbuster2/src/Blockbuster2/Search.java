@@ -21,5 +21,14 @@ public class Search {
         for(Item i : search.Search)
             this.Search.add(i);
     }
+    
+    public String toString() {
+        String output = "Search Results:";
+        
+        for(int i = 0; i < Search.size(); i++)
+            output += "Result " + (i+1) + ":\n" + Search.get(i);
+        
+        return output;
+    }
 
 } // Search

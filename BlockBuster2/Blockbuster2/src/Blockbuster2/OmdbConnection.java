@@ -60,6 +60,10 @@ public class OmdbConnection {
         return getMoviesByTitle(title, "", year);
     }
     
+    public static Search getMoviesByTitle(String title, int year, int page) {
+        return getMoviesByTitle(title, "", year);
+    }
+    
     public static Search getMoviesByTitle(String title, String type, int year) {
         Search search = null;
         
@@ -96,10 +100,6 @@ public class OmdbConnection {
             
             for(int i = 0; i < search.Search.size(); i++)
                     search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID, true));
-            
-            for (Item i : search.Search) {
-                System.out.println(i);
-            }
 
         } catch (JsonSyntaxException | IOException ex) {
             Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
