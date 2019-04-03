@@ -90,7 +90,7 @@ public class OmdbConnection {
                     json = readUrl(url.replace(" ", ""));
                     Search nextPage = GSON.fromJson(json, Search.class);
                     search.addLastPage(nextPage);
-                    moreResponses = nextPage.Search.size() == 10 || page <= 10;
+                    moreResponses = nextPage.Search.size() == 10 && page <= 10;
                 }
             }
             

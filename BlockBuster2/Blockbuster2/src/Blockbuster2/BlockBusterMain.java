@@ -20,6 +20,8 @@ public class BlockBusterMain {
         System.out.println(OmdbConnection.getMoviesByTitle("Bee", 2007));
         System.out.println("\n\n\n");
         System.out.println(OmdbConnection.getMoviesByTitle("Bee", 2008));
+        System.out.println("\n\n\n");
+        System.out.println(OmdbConnection.getMoviesByTitle("Bee"));
     }
     
 }
