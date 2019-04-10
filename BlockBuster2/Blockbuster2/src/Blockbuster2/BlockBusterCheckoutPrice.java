@@ -93,6 +93,7 @@ public class BlockBusterCheckoutPrice extends javax.swing.JFrame {
     private void jBConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmActionPerformed
         BlockBusterSwipeCard mySwipeCard = new BlockBusterSwipeCard();
         
+        this.setVisible(false);
         mySwipeCard.setVisible(true);
     }//GEN-LAST:event_jBConfirmActionPerformed
 

@@ -5,7 +5,6 @@
  */
 package Blockbuster2;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Timer;
 
@@ -102,24 +101,12 @@ public class BlockBusterSwipeCard extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmActionPerformed
-        BlockBusterCheckoutPrice myCheckoutPrice = new BlockBusterCheckoutPrice();
+
         BlockBusterLogout myLogout = new BlockBusterLogout();
 
-        Timer t = new Timer(10000, new ActionListener()
-        {
-            public void actionPreformed(ActionEvent e)
-            {
-                myLogout.setVisible(false);
-            }
-
-        });
-        
-        t.start();
-        
-        
         this.setVisible(false);
-        myCheckoutPrice.setVisible(false);
         myLogout.setVisible(true);
+
         
     }//GEN-LAST:event_jBConfirmActionPerformed
 
@@ -161,7 +148,7 @@ public class BlockBusterSwipeCard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBConfirm;
+    public static javax.swing.JButton jBConfirm;
     private javax.swing.JLabel jLCharge;
     private javax.swing.JLabel jLMax;
     private javax.swing.JLabel jLSwipe;
