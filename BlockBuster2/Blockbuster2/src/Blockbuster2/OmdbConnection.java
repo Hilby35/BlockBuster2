@@ -80,7 +80,7 @@ public class OmdbConnection {
             search = GSON.fromJson(json, Search.class);
             
             int totalResponses = Integer.parseInt(search.totalResults);
-            if(totalResponses > 10) {
+            if(totalResponses > 3) {
                 boolean moreResponses = true;
                 int page = 2;
                 while(moreResponses) {
