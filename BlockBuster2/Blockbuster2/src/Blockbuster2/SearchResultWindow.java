@@ -162,7 +162,7 @@ public class SearchResultWindow extends javax.swing.JFrame {
     private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton moreInfoButton;
-    private javax.swing.JList<String> resultList;
+    public javax.swing.JList<String> resultList;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel yearLabel;
     // End of variables declaration//GEN-END:variables
