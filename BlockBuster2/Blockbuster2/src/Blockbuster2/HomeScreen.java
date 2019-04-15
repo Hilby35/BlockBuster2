@@ -5,6 +5,7 @@
  */
 package Blockbuster2;
 
+import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 
 /**
@@ -62,6 +63,11 @@ public class HomeScreen extends javax.swing.JFrame {
         jbSearchButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jbSearchButton.setForeground(new java.awt.Color(255, 255, 51));
         jbSearchButton.setText("Go!");
+        jbSearchButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbSearchButtonActionPerformed(evt);
+            }
+        });
 
         jlMovieImage3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/CaptainMarvel_1.jpg"))); // NOI18N
 
@@ -154,6 +160,17 @@ public class HomeScreen extends javax.swing.JFrame {
         advancedSearch.setVisible(true);
         
     }//GEN-LAST:event_jbAdvancedSearchActionPerformed
+
+    private void jbSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchButtonActionPerformed
+        Search search = OmdbConnection.getMoviesByTitle(jtfSearchBar.getText());
+        SearchResultWindow srw = new SearchResultWindow();
+        DefaultListModel resultModel = new DefaultListModel();
+        for(int i = 0; i < search.Search.size(); i++){
+            resultModel.addElement(search.Search.get(i).Title);
+        }
+        srw.resultList.setModel(resultModel);
+        srw.setVisible(true);
+    }//GEN-LAST:event_jbSearchButtonActionPerformed
 
     /**
      * @param args the command line arguments
