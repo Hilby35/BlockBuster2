@@ -16,5 +16,19 @@ public class Search {
     List<Item> Search;
     String totalResults;
     String Response;
+    
+    public void addLastPage(Search search){
+        for(Item i : search.Search)
+            this.Search.add(i);
+    }
+    
+    public String toString() {
+        String output = "Search Results:\n";
+        
+        for(int i = 0; i < Search.size(); i++)
+            output += "Result " + (i+1) + ":\n" + Search.get(i) + "\n\n";
+        
+        return output;
+    }
 
 } // Search

@@ -15,7 +15,13 @@ public class BlockBusterMain {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        //System.out.println(OmdbConnection.getPosterUrlByTitle("Dumbo", 600));
+        
+        System.out.println(OmdbConnection.getMoviesByTitle("Bee", 2007));
+        System.out.println("\n\n\n");
+        System.out.println(OmdbConnection.getMoviesByTitle("Bee", 2008));
+        System.out.println("\n\n\n");
+        System.out.println(OmdbConnection.getMoviesByTitle("Bee"));
     }
     
 }

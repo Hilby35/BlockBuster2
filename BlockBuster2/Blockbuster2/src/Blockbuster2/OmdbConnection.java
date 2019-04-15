@@ -11,6 +11,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -22,7 +23,10 @@ import java.util.logging.Logger;
 public class OmdbConnection {
 
     private static final String APIKEY = "3679f682";
-
+    
+    private static final String[] TYPE_VALUES = {"movie", "series", "episode"};
+    private static final String[] PLOT_VALUES = {"short", "full"};
+    
     private static final Gson GSON = new Gson();
 
     private static String readUrl(String urlString) throws IOException {
@@ -48,28 +52,84 @@ public class OmdbConnection {
         return null;
     }
 
-    public static void getMoviesByTitle(String title) {
+    public static Search getMoviesByTitle(String title) {
+        return getMoviesByTitle(title, "", 0);
+    }
+    
+    public static Search getMoviesByTitle(String title, int year) {
+        return getMoviesByTitle(title, "", year);
+    }
+    
+    public static Search getMoviesByTitle(String title, int year, int page) {
+        return getMoviesByTitle(title, "", year);
+    }
+    
+    public static Search getMoviesByTitle(String title, String type, int year) {
+        Search search = null;
+        
         try {
-            String json = readUrl("http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title + "&plot=full");
-            Search search = GSON.fromJson(json, Search.class);
-
-            for(int i = 0; i < search.Search.size(); i++)
-                search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID));
-
-            for (Item i : search.Search) {
-                System.out.println(i);
+            String url = "http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title;
+            
+            if(!type.isEmpty() && Arrays.asList(TYPE_VALUES).contains(type))
+                url += "&type=" + type;
+            
+            if(year != 0)
+                url += "&y=" + year;
+            
+            String json = readUrl(url.replace(" ", ""));
+            search = GSON.fromJson(json, Search.class);
+            
+            int totalResponses = Integer.parseInt(search.totalResults);
+            if(totalResponses > 10) {
+                boolean moreResponses = true;
+                int page = 2;
+                while(moreResponses) {
+                    url = "http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title + "&page=" + page++;
+                    if(!type.isEmpty() && Arrays.asList(TYPE_VALUES).contains(type))
+                        url += "&type=" + type;
+                    
+                    if(year != 0)
+                        url += "&y=" + year;
+                    
+                    json = readUrl(url.replace(" ", ""));
+                    Search nextPage = GSON.fromJson(json, Search.class);
+                    search.addLastPage(nextPage);
+                    moreResponses = nextPage.Search.size() == 10 && page <= 10;
+                }
             }
+            
+            for(int i = 0; i < search.Search.size(); i++)
+                    search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID, true));
 
         } catch (JsonSyntaxException | IOException ex) {
             Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-
+        } catch (NullPointerException ex) {
+            System.out.println("No Movies Found.");
+            return null;
         }
+        
+        return search;
     }
 
-    public static Item getMovieByImdbID(String imdbID) throws IOException {
-        String json = readUrl("http://www.omdbapi.com/?apikey=" + APIKEY + "&i=" + imdbID + "&plot=full");
+    public static Item getMovieByImdbID(String imdbID, boolean plot) throws IOException {
+        String url = "http://www.omdbapi.com/?apikey=" + APIKEY + "&i=" + imdbID;
+            
+            if(plot)
+                url += "&plot=full";
+            
+        String json = readUrl(url.replace(" ", ""));
         return GSON.fromJson(json, Item.class);
+    }
+    
+    public static String getPosterUrlByImdbID(String imdbID, int height) {
+        String url = "http://img.omdbapi.com/?apikey=" + APIKEY + "&i=" + imdbID + "&h=" + height;
+        return url;
+    }
+    
+    public static String getPosterUrlByTitle(String title, int height) {
+        String imdbID = getMoviesByTitle(title, "", 0).Search.get(0).imdbID;
+        return getPosterUrlByImdbID(imdbID, height);
+        
     }
 
 } // OmdbConnection

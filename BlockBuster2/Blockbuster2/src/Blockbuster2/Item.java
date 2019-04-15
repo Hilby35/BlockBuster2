@@ -19,7 +19,14 @@ public class Item {
 
     @Override
     public String toString() {
-        return "Item{" + "Title=" + Title + ", Year=" + Year + ", Rated=" + Rated + ", Released=" + Released + ", Runtime=" + Runtime + ", Genre=" + Genre + ", Director=" + Director + ", Writer=" + Writer + ", Actors=" + Actors + ", Plot=" + Plot + ", Language=" + Language + ", Country=" + Country + ", Awards=" + Awards + ", Poster=" + Poster + ", Metascore=" + Metascore + ", imdbRating=" + imdbRating + ", imdbVotes=" + imdbVotes + ", imdbID=" + imdbID + ", Type=" + Type + ", DVD=" + DVD + ", BoxOffice=" + BoxOffice + ", Production=" + Production + ", Website=" + Website + ", Response=" + Response + ", Ratings=" + Ratings + '}';
+        String output = "Title: " + Title;
+        output += "\nImdbID: " + imdbID;
+        output += "\nReleased: " + Released;
+        output += "\nRuntime: " + Runtime;
+        output += "\nPlot: " + Plot;
+        output += "\nPoster: " + Poster;
+        
+        return output;
     }
     
     
