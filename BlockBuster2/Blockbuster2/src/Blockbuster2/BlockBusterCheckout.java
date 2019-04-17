@@ -5,6 +5,8 @@
  */
 package Blockbuster2;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author mch5367
@@ -14,6 +16,8 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
     /**
      * Creates new form BlockBusterCheckout
      */
+    
+    DefaultListModel myDL = new DefaultListModel();
     public BlockBusterCheckout() {
         initComponents();
     }
@@ -27,12 +31,15 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jBCheckout = new javax.swing.JButton();
         jLShoppingCart = new javax.swing.JLabel();
         jPCheckOutDisplay = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jLMovies = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel1.setText("jLabel1");
 
         jBCheckout.setText("CheckOut");
         jBCheckout.addActionListener(new java.awt.event.ActionListener() {
@@ -45,17 +52,28 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
 
         jPCheckOutDisplay.setBorder(javax.swing.BorderFactory.createTitledBorder("My Movies"));
 
+        jLMovies.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane1.setViewportView(jLMovies);
+
         //When user clicks add to cart from search screen, shopping cart will display title of movie you have listen and possibly quantity
 
         javax.swing.GroupLayout jPCheckOutDisplayLayout = new javax.swing.GroupLayout(jPCheckOutDisplay);
         jPCheckOutDisplay.setLayout(jPCheckOutDisplayLayout);
         jPCheckOutDisplayLayout.setHorizontalGroup(
             jPCheckOutDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+            .addGroup(jPCheckOutDisplayLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 49, Short.MAX_VALUE))
         );
         jPCheckOutDisplayLayout.setVerticalGroup(
             jPCheckOutDisplayLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 153, Short.MAX_VALUE)
+            .addGroup(jPCheckOutDisplayLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -71,12 +89,12 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPCheckOutDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLShoppingCart))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(37, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLShoppingCart)
                 .addGap(11, 11, 11)
                 .addComponent(jPCheckOutDisplay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -89,11 +107,17 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -144,8 +168,11 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBCheckout;
+    public javax.swing.JList<String> jLMovies;
     private javax.swing.JLabel jLShoppingCart;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPCheckOutDisplay;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

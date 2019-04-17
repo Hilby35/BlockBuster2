@@ -135,7 +135,10 @@ public class SearchResultWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_moreInfoButtonActionPerformed
 
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
-        // TODO add your handling code here:
+        BlockBusterCheckout myCO = new BlockBusterCheckout();
+        myCO.myDL.addElement(resultList.getSelectedValue());
+        myCO.jLMovies.setModel(myCO.myDL);
+        myCO.setVisible(true);
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
     private void resultListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_resultListValueChanged
