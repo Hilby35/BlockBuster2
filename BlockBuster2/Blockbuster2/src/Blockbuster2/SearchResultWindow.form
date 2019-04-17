@@ -37,7 +37,7 @@
                   <Component id="titleLabel" min="-2" max="-2" attributes="0"/>
                   <Component id="imageLabel" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="105" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -46,7 +46,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" pref="424" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="553" max="32767" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="imageLabel" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -126,9 +126,6 @@
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="imageLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="image"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>

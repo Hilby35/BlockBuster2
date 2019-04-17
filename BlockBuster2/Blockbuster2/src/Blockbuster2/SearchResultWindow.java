@@ -82,8 +82,6 @@ public class SearchResultWindow extends javax.swing.JFrame {
             }
         });
 
-        imageLabel.setText("image");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -100,14 +98,14 @@ public class SearchResultWindow extends javax.swing.JFrame {
                     .addComponent(yearLabel)
                     .addComponent(titleLabel)
                     .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(105, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 424, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -145,9 +143,11 @@ public class SearchResultWindow extends javax.swing.JFrame {
         try{
             BufferedImage img = ImageIO.read(new URL(search.Search.get(0).Poster));
             this.imageLabel.setIcon(new ImageIcon(img));
+            this.imageLabel.setText("");
 
         } catch(MalformedURLException e){
             this.imageLabel.setText("No image");
+            this.imageLabel.setIcon(null);
         } catch (IOException ex) {
             Logger.getLogger(SearchResultWindow.class.getName()).log(Level.SEVERE, null, ex);
         }
