@@ -163,7 +163,7 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void jbSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchButtonActionPerformed
         Search search = OmdbConnection.getMoviesByTitle(jtfSearchBar.getText());
-        SearchResultWindow srw = new SearchResultWindow();
+        SearchResultWindow srw = new SearchResultWindow(search);
         DefaultListModel resultModel = new DefaultListModel();
         for(int i = 0; i < search.Search.size(); i++){
             resultModel.addElement(search.Search.get(i).Title);
