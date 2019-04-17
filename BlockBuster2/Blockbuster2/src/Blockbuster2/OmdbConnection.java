@@ -79,7 +79,10 @@ public class OmdbConnection {
             String json = readUrl(url.replace(" ", ""));
             search = GSON.fromJson(json, Search.class);
             
+            
+            
             int totalResponses = Integer.parseInt(search.totalResults);
+            
             if(totalResponses > 3) {
                 boolean moreResponses = true;
                 int page = 2;
@@ -104,6 +107,9 @@ public class OmdbConnection {
         } catch (JsonSyntaxException | IOException ex) {
             Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
         } catch (NullPointerException ex) {
+            System.out.println("No Movies Found.");
+            return null;
+        } catch (Exception ex) {
             System.out.println("No Movies Found.");
             return null;
         }
