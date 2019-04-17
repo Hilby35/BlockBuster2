@@ -11,6 +11,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -20,11 +21,13 @@ import javax.swing.ImageIcon;
  */
 public class SearchResultWindow extends javax.swing.JFrame {
 
+    Search search;
     /**
      * Creates new form SearchResultWindow
      */
-    public SearchResultWindow() {
+    public SearchResultWindow(Search search) {
         initComponents();
+        this.search = search;
     }
 
     /**
@@ -44,7 +47,7 @@ public class SearchResultWindow extends javax.swing.JFrame {
         addToCartButton = new javax.swing.JButton();
         imageLabel = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         resultList.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -135,17 +138,17 @@ public class SearchResultWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_addToCartButtonActionPerformed
 
     private void resultListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_resultListValueChanged
-        Search search = OmdbConnection.getMoviesByTitle(this.resultList.getSelectedValue());
+        Item item = search.Search.get(this.resultList.getSelectedIndex());
         
-        this.titleLabel.setText(search.Search.get(0).Title);
-        this.yearLabel.setText(search.Search.get(0).Year);
+        this.titleLabel.setText(item.Title);
+        this.yearLabel.setText(item.Year);
         
         try{
-            BufferedImage img = ImageIO.read(new URL(search.Search.get(0).Poster));
+            BufferedImage img = ImageIO.read(new URL(item.Poster));
             this.imageLabel.setIcon(new ImageIcon(img));
             this.imageLabel.setText("");
 
-        } catch(MalformedURLException e){
+        } catch(MalformedURLException | IIOException e){
             this.imageLabel.setText("No image");
             this.imageLabel.setIcon(null);
         } catch (IOException ex) {
@@ -156,37 +159,7 @@ public class SearchResultWindow extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SearchResultWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SearchResultWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SearchResultWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SearchResultWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new SearchResultWindow().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartButton;
