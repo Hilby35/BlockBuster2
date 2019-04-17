@@ -105,12 +105,16 @@ public class OmdbConnection {
                     search.Search.set(i, getMovieByImdbID(search.Search.get(i).imdbID, true));
 
         } catch (JsonSyntaxException | IOException ex) {
-            Logger.getLogger(OmdbConnection.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("No Movies Found.");
+            System.out.println("Error: " + ex);
+            return null;
         } catch (NullPointerException ex) {
             System.out.println("No Movies Found.");
+            System.out.println("Error: " + ex);
             return null;
         } catch (Exception ex) {
             System.out.println("No Movies Found.");
+            System.out.println("Error: " + ex);
             return null;
         }
         
