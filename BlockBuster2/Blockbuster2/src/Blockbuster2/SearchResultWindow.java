@@ -5,6 +5,15 @@
  */
 package Blockbuster2;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author thb5075
@@ -45,6 +54,11 @@ public class SearchResultWindow extends javax.swing.JFrame {
         resultList.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 resultListMouseClicked(evt);
+            }
+        });
+        resultList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                resultListValueChanged(evt);
             }
         });
         jScrollPane1.setViewportView(resultList);
@@ -121,6 +135,23 @@ public class SearchResultWindow extends javax.swing.JFrame {
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addToCartButtonActionPerformed
+
+    private void resultListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_resultListValueChanged
+        Search search = OmdbConnection.getMoviesByTitle(this.resultList.getSelectedValue());
+        
+        this.titleLabel.setText(search.Search.get(0).Title);
+        this.yearLabel.setText(search.Search.get(0).Year);
+        
+        try{
+            BufferedImage img = ImageIO.read(new URL(search.Search.get(0).Poster));
+            this.imageLabel.setIcon(new ImageIcon(img));
+
+        } catch(MalformedURLException e){
+            this.imageLabel.setText("No image");
+        } catch (IOException ex) {
+            Logger.getLogger(SearchResultWindow.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_resultListValueChanged
 
     /**
      * @param args the command line arguments
