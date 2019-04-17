@@ -67,6 +67,8 @@ public class OmdbConnection {
     public static Search getMoviesByTitle(String title, String type, int year) {
         Search search = null;
         
+        title = title.replaceAll(" ",  "%20");
+        
         try {
             String url = "http://www.omdbapi.com/?apikey=" + APIKEY + "&s=" + title;
             
@@ -83,7 +85,7 @@ public class OmdbConnection {
             
             int totalResponses = Integer.parseInt(search.totalResults);
             
-            if(totalResponses > 3) {
+            if(totalResponses > 10) {
                 boolean moreResponses = true;
                 int page = 2;
                 while(moreResponses) {
