@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 public class HomeScreen extends javax.swing.JFrame {
 
     static SearchResultWindow srw;
+    static BlockBusterCheckout checkout  = new BlockBusterCheckout();
     /**
      * Creates new form HomeScreen
      */
@@ -36,7 +37,6 @@ public class HomeScreen extends javax.swing.JFrame {
     private void initComponents() {
 
         jtfSearchBar = new javax.swing.JTextField();
-        jbAdvancedSearch = new javax.swing.JButton();
         jbSearchButton = new javax.swing.JButton();
         jpMovieDisplayer = new javax.swing.JPanel();
         jlMovieImage3 = new javax.swing.JLabel();
@@ -44,6 +44,7 @@ public class HomeScreen extends javax.swing.JFrame {
         jlMovieImage2 = new javax.swing.JLabel();
         jlSearchMoviesLabel = new javax.swing.JLabel();
         jlTrendingMoviesLabel = new javax.swing.JLabel();
+        jlShoppingCart = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BlockBuster2 Home Screen");
@@ -57,13 +58,6 @@ public class HomeScreen extends javax.swing.JFrame {
         jtfSearchBar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtfSearchBarKeyPressed(evt);
-            }
-        });
-
-        jbAdvancedSearch.setText("Advanced Search");
-        jbAdvancedSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbAdvancedSearchActionPerformed(evt);
             }
         });
 
@@ -115,44 +109,55 @@ public class HomeScreen extends javax.swing.JFrame {
         jlTrendingMoviesLabel.setForeground(new java.awt.Color(51, 51, 255));
         jlTrendingMoviesLabel.setText("Trending Movies");
 
+        ImageIcon shoppingCartIcon = new ImageIcon("Blockbuster2.images\\ShoppingCart.jpg");
+        jlShoppingCart.setIcon(shoppingCartIcon);
+        jlShoppingCart.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Blockbuster2/images/ShoppingCart.jpg"))); // NOI18N
+        jlShoppingCart.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jlShoppingCartMouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(64, 64, 64)
+                .addComponent(jpMovieDisplayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(73, 73, 73)
-                .addComponent(jlSearchMoviesLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlSearchMoviesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jtfSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jbSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jbAdvancedSearch)
-                .addGap(121, 121, 121))
+                .addGap(156, 156, 156))
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(445, 445, 445)
-                        .addComponent(jlTrendingMoviesLabel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(64, 64, 64)
-                        .addComponent(jpMovieDisplayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(445, 445, 445)
+                .addComponent(jlTrendingMoviesLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlShoppingCart, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(jlTrendingMoviesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(jlTrendingMoviesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jlShoppingCart, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpMovieDisplayer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jtfSearchBar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jlSearchMoviesLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jbAdvancedSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(50, Short.MAX_VALUE))
+                    .addComponent(jbSearchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(48, 48, 48))
         );
 
         pack();
@@ -161,13 +166,6 @@ public class HomeScreen extends javax.swing.JFrame {
     private void jtfSearchBarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtfSearchBarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jtfSearchBarActionPerformed
-
-    private void jbAdvancedSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbAdvancedSearchActionPerformed
-        
-        SearchWindow advancedSearch = new SearchWindow();
-        advancedSearch.setVisible(true);
-        
-    }//GEN-LAST:event_jbAdvancedSearchActionPerformed
 
     private void jbSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchButtonActionPerformed
         search();
@@ -178,6 +176,11 @@ public class HomeScreen extends javax.swing.JFrame {
             search();
         }
     }//GEN-LAST:event_jtfSearchBarKeyPressed
+
+    private void jlShoppingCartMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jlShoppingCartMouseClicked
+        
+        checkout.setVisible(true);
+    }//GEN-LAST:event_jlShoppingCartMouseClicked
 
     private void search() {
         Search search = OmdbConnection.getMoviesByTitle(jtfSearchBar.getText());
@@ -232,12 +235,12 @@ public class HomeScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jbAdvancedSearch;
     private javax.swing.JButton jbSearchButton;
     private javax.swing.JLabel jlMovieImage1;
     private javax.swing.JLabel jlMovieImage2;
     private javax.swing.JLabel jlMovieImage3;
     private javax.swing.JLabel jlSearchMoviesLabel;
+    private javax.swing.JLabel jlShoppingCart;
     private javax.swing.JLabel jlTrendingMoviesLabel;
     private javax.swing.JPanel jpMovieDisplayer;
     private javax.swing.JTextField jtfSearchBar;
