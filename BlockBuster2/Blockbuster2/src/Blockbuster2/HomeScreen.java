@@ -8,6 +8,7 @@ package Blockbuster2;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -179,15 +180,21 @@ public class HomeScreen extends javax.swing.JFrame {
 
     private void search() {
         Search search = OmdbConnection.getMoviesByTitle(jtfSearchBar.getText());
-        SearchResultWindow srw = new SearchResultWindow(search);
-        DefaultListModel resultModel = new DefaultListModel();
-        for(int i = 0; i < search.Search.size(); i++){
-            resultModel.addElement(search.Search.get(i).Title);
+        if (search == null){
+            JOptionPane.showMessageDialog(this, "No Movies Found.", 
+                    "No Result", JOptionPane.WARNING_MESSAGE);
         }
-        srw.resultList.setModel(resultModel);
-        srw.setVisible(true);
-    }
-    
+        else{
+            SearchResultWindow srw = new SearchResultWindow(search);
+            DefaultListModel resultModel = new DefaultListModel();
+            for(int i = 0; i < search.Search.size(); i++){
+                resultModel.addElement(search.Search.get(i).Title);
+            }
+            srw.resultList.setModel(resultModel);
+            srw.setVisible(true);
+        }
+    }//GEN-LAST:event_jbSearchButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
