@@ -21,6 +21,7 @@ import javax.swing.ImageIcon;
  */
 public class SearchResultWindow extends javax.swing.JFrame {
 
+    BlockBusterCheckout myCO = new BlockBusterCheckout();
     Search search;
     /**
      * Creates new form SearchResultWindow
@@ -135,7 +136,7 @@ public class SearchResultWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_moreInfoButtonActionPerformed
 
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
-        BlockBusterCheckout myCO = new BlockBusterCheckout();
+        
         myCO.myDL.addElement(resultList.getSelectedValue());
         myCO.jLMovies.setModel(myCO.myDL);
         myCO.setVisible(true);
