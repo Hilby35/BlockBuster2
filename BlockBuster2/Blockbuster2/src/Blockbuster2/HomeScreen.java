@@ -5,6 +5,7 @@
  */
 package Blockbuster2;
 
+import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 
@@ -49,6 +50,11 @@ public class HomeScreen extends javax.swing.JFrame {
         jtfSearchBar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jtfSearchBarActionPerformed(evt);
+            }
+        });
+        jtfSearchBar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jtfSearchBarKeyPressed(evt);
             }
         });
 
@@ -162,6 +168,16 @@ public class HomeScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_jbAdvancedSearchActionPerformed
 
     private void jbSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSearchButtonActionPerformed
+        search();
+    }//GEN-LAST:event_jbSearchButtonActionPerformed
+
+    private void jtfSearchBarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtfSearchBarKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            search();
+        }
+    }//GEN-LAST:event_jtfSearchBarKeyPressed
+
+    private void search() {
         Search search = OmdbConnection.getMoviesByTitle(jtfSearchBar.getText());
         SearchResultWindow srw = new SearchResultWindow(search);
         DefaultListModel resultModel = new DefaultListModel();
@@ -170,8 +186,8 @@ public class HomeScreen extends javax.swing.JFrame {
         }
         srw.resultList.setModel(resultModel);
         srw.setVisible(true);
-    }//GEN-LAST:event_jbSearchButtonActionPerformed
-
+    }
+    
     /**
      * @param args the command line arguments
      */
