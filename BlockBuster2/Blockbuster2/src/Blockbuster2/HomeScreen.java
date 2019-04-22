@@ -18,6 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class HomeScreen extends javax.swing.JFrame {
 
+    static SearchResultWindow srw;
     /**
      * Creates new form HomeScreen
      */
@@ -185,7 +186,7 @@ public class HomeScreen extends javax.swing.JFrame {
                     "No Result", JOptionPane.WARNING_MESSAGE);
         }
         else{
-            SearchResultWindow srw = new SearchResultWindow(search);
+            srw = new SearchResultWindow(search);
             DefaultListModel resultModel = new DefaultListModel();
             for(int i = 0; i < search.Search.size(); i++){
                 resultModel.addElement(search.Search.get(i).Title);
@@ -193,7 +194,7 @@ public class HomeScreen extends javax.swing.JFrame {
             srw.resultList.setModel(resultModel);
             srw.setVisible(true);
         }
-    }//GEN-LAST:event_jbSearchButtonActionPerformed
+    }                                              
 
     /**
      * @param args the command line arguments
