@@ -125,7 +125,7 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
 
     private void jBCheckoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCheckoutActionPerformed
         
-        BlockBusterCheckoutPrice myPrice = new BlockBusterCheckoutPrice();
+        BlockBusterCheckoutPrice myPrice = new BlockBusterCheckoutPrice(jLMovies.getModel().getSize());
         
         this.setVisible(false);
         myPrice.setVisible(true);
