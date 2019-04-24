@@ -140,7 +140,8 @@ public class BlockBusterCheckout extends javax.swing.JFrame {
     }//GEN-LAST:event_jBCheckoutActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        HomeScreen.srw.setVisible(false);
+        if(HomeScreen.srw != null)
+            HomeScreen.srw.setVisible(false);
         this.setVisible(false);
         
     }//GEN-LAST:event_jButton1ActionPerformed
