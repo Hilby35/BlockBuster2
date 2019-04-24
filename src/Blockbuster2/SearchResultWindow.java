@@ -25,6 +25,7 @@ public class SearchResultWindow extends javax.swing.JFrame {
     Search search;
     /**
      * Creates new form SearchResultWindow
+     * @param search
      */
     public SearchResultWindow(Search search) {
         initComponents();
