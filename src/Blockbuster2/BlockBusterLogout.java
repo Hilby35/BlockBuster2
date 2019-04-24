@@ -89,9 +89,9 @@ public class BlockBusterLogout extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBConfirmActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBConfirmActionPerformed
-
-    this.setVisible(false);
-
+        jfLogIn.mainScreen.setVisible(false);
+        this.setVisible(false);
+        jfLogIn.main(new String[0]);
     }//GEN-LAST:event_jBConfirmActionPerformed
 
     /**

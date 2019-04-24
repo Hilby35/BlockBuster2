@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
  */
 public class jfLogIn extends javax.swing.JFrame {
 
+    static HomeScreen mainScreen;
     /**
      * Creates new form jfLogIn
      */
@@ -111,7 +112,7 @@ public class jfLogIn extends javax.swing.JFrame {
         if (jTextField1.getText().equals("user")
                 && jPasswordField1.getText().equals("password"))
         {
-            HomeScreen mainScreen = new HomeScreen();
+            mainScreen = new HomeScreen();
             
             this.setVisible(false); // closes login screen
             mainScreen.setVisible(true); // opens main screen
@@ -126,7 +127,7 @@ public class jfLogIn extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -161,7 +162,7 @@ public class jfLogIn extends javax.swing.JFrame {
             }
         });
     }
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
