@@ -45,9 +45,10 @@ public class SearchResultWindow extends javax.swing.JFrame {
         resultList = new javax.swing.JList<>();
         titleLabel = new javax.swing.JLabel();
         yearLabel = new javax.swing.JLabel();
-        moreInfoButton = new javax.swing.JButton();
         addToCartButton = new javax.swing.JButton();
         imageLabel = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        descriptionLabel = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -70,16 +71,9 @@ public class SearchResultWindow extends javax.swing.JFrame {
         jScrollPane1.setViewportView(resultList);
 
         titleLabel.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        titleLabel.setText("Movie Title");
+        titleLabel.setText(" ");
 
-        yearLabel.setText("Year");
-
-        moreInfoButton.setText("More Info");
-        moreInfoButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                moreInfoButtonActionPerformed(evt);
-            }
-        });
+        yearLabel.setText(" ");
 
         addToCartButton.setText("Add To Cart");
         addToCartButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,6 +81,15 @@ public class SearchResultWindow extends javax.swing.JFrame {
                 addToCartButtonActionPerformed(evt);
             }
         });
+
+        descriptionLabel.setColumns(20);
+        descriptionLabel.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        descriptionLabel.setLineWrap(true);
+        descriptionLabel.setRows(5);
+        descriptionLabel.setToolTipText("");
+        descriptionLabel.setWrapStyleWord(true);
+        descriptionLabel.setEnabled(false);
+        jScrollPane3.setViewportView(descriptionLabel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -96,32 +99,35 @@ public class SearchResultWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(moreInfoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(addToCartButton))
-                    .addComponent(yearLabel)
-                    .addComponent(titleLabel)
-                    .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(titleLabel)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(yearLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(addToCartButton)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 553, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(imageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(imageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(titleLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(yearLabel)
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(addToCartButton)
-                            .addComponent(moreInfoButton))))
+                            .addComponent(yearLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -131,10 +137,6 @@ public class SearchResultWindow extends javax.swing.JFrame {
     private void resultListMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_resultListMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_resultListMouseClicked
-
-    private void moreInfoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_moreInfoButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_moreInfoButtonActionPerformed
 
     private void addToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToCartButtonActionPerformed
         
@@ -149,6 +151,8 @@ public class SearchResultWindow extends javax.swing.JFrame {
         
         this.titleLabel.setText(item.Title);
         this.yearLabel.setText(item.Year);
+        this.descriptionLabel.setText(item.Plot);
+        this.descriptionLabel.setCaretPosition(0);
         
         try{
             BufferedImage img = ImageIO.read(new URL(item.Poster));
@@ -170,9 +174,10 @@ public class SearchResultWindow extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addToCartButton;
+    private javax.swing.JTextArea descriptionLabel;
     private javax.swing.JLabel imageLabel;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton moreInfoButton;
+    private javax.swing.JScrollPane jScrollPane3;
     public javax.swing.JList<String> resultList;
     private javax.swing.JLabel titleLabel;
     private javax.swing.JLabel yearLabel;
