@@ -43,7 +43,7 @@ public class BlockBusterSwipeCard extends javax.swing.JFrame {
 
         jLCharge.setText("You will be charged once you return the movies");
 
-        jLMax.setText("You will be charged max amount if kept past certian day");
+        jLMax.setText("You will be charged max amount if kept past certain day");
 
         jBConfirm.setText("Confirm");
         jBConfirm.addActionListener(new java.awt.event.ActionListener() {

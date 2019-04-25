@@ -90,7 +90,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLMax">
           <Properties>
-            <Property name="text" type="java.lang.String" value="You will be charged max amount if kept past certian day"/>
+            <Property name="text" type="java.lang.String" value="You will be charged max amount if kept past certain day"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jBConfirm">
